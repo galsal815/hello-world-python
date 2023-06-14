@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        git(url: 'https://github.com/galsal815/hello-world-python', branch: 'master')
+        git(url: 'https://github.com/galsal815/hello-world-python.git', branch: 'master')
       }
     }
 
