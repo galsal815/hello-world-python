@@ -8,13 +8,13 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        git(url: 'https://github.com/galsal815/hello-world-python.git', branch: 'master')
+        git(url: 'git@github.com:galsal815/hello-world-python.git', branch: 'master')
       }
     }
 
     stage('Build') {
       steps {
-        sh 'docker build -t hello-world-python .'
+        sh 'docker build -t hello-world-python:${env.BUILD_NUMBER} .'
       }
     }
 
