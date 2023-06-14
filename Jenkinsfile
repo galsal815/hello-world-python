@@ -14,13 +14,16 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'docker build .'
+        sh 'docker build -t hellow-world-python .'
       }
     }
 
     stage('Test') {
       steps {
+        sh 'docker run -itd -p 8080:8080 --name hellow-world hello-world-python'
         sleep 5
+        sh 'curl localhost:8080'
+        sh 'docker stop hellow-world && docker rm hello-world'
       }
     }
 
