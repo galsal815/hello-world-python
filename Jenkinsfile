@@ -14,13 +14,13 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'docker build -t hello-world-python:${env.BUILD_NUMBER} .'
+        sh 'docker build -t galsal/hello-world-python:$BUILD_NUMBER .'
       }
     }
 
     stage('Test') {
       steps {
-        sh 'docker run -itd -p 8080:8080 --name hello-world hello-world-python'
+        sh 'docker run -itd -p 8080:8080 --name hello-world galsal/hello-world-python:$BUILD_NUMBER'
         sleep 5
         sh 'curl localhost:8080'
         sh 'docker stop hellow-world && docker rm hello-world'
